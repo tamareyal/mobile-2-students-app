@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.studentsapp.databinding.ActivityStudentDetailsBinding
 import com.example.studentsapp.models.Student
 import com.example.studentsapp.models.Model
+import android.content.Intent
 
 class StudentDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityStudentDetailsBinding
@@ -35,6 +36,15 @@ class StudentDetailsActivity : AppCompatActivity() {
 
         binding.checkBox.setOnCheckedChangeListener { _, isChecked ->
             student?.isChecked = isChecked
+        }
+
+        binding.editButton.setOnClickListener {
+            // Once implemented, this will open EditStudentActivity
+//            student?.let { student ->
+//                val intent = Intent(this, EditStudentActivity::class.java)
+//                intent.putExtra("STUDENT_ID", student.id)
+//                startActivity(intent)
+//            }
         }
     }
 }
