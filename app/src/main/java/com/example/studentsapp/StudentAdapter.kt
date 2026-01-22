@@ -27,7 +27,6 @@ class StudentAdapter (
         }
 
     override fun onBindViewHolder(holder: StudentRowViewHolder, position: Int) {
-//        TODO("Not yet implemented")
         holder.bind(students[position], position)
 
     }
