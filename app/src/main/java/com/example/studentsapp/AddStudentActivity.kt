@@ -18,7 +18,6 @@ class AddStudentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddStudentBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setupView()
     }
 
@@ -52,4 +51,5 @@ class AddStudentActivity : AppCompatActivity() {
             }
         }
     }
+
 }

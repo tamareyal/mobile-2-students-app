@@ -13,7 +13,7 @@
         android:theme="@style/Theme.StudentsApp">
         <activity
             android:name=".AddStudentActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

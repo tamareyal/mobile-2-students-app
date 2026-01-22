@@ -9,6 +9,7 @@ import com.example.studentsapp.databinding.ActivityMainBinding
 import com.example.studentsapp.StudentsAdapter
 import com.example.studentsapp.models.Model
 import androidx.recyclerview.widget.LinearLayoutManager
+import android.content.Intent
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupRecyclerView()
+        setupAddStudentButton()
     }
 
     private fun setupRecyclerView() {
@@ -33,5 +35,19 @@ class MainActivity : AppCompatActivity() {
                 // TODO: Handle item click - show student details
             }
         }
+    }
+
+    private fun setupAddStudentButton() {
+        binding.addStudentButton.setOnClickListener {
+            // Open AddStudentActivity
+            val intent = Intent(this, AddStudentActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        adapter.notifyDataSetChanged()
     }
 }
