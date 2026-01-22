@@ -32,7 +32,9 @@ class MainActivity : AppCompatActivity() {
 
         adapter.listener = object : OnItemClickListener {
             override fun onStudentItemClick(student: com.example.studentsapp.models.Student) {
-                // TODO: Handle item click - show student details
+                val intent = Intent(this@MainActivity, StudentDetailsActivity::class.java)
+                intent.putExtra("STUDENT_ID", student.id)
+                startActivity(intent)
             }
         }
     }

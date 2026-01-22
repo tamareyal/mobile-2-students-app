@@ -30,13 +30,17 @@ class AddStudentActivity : AppCompatActivity() {
         binding.saveButton.setOnClickListener {
             val name = binding.nameEditText.text.toString()
             val id = binding.idEditText.text.toString()
+            val phone = binding.phoneEditText.text.toString()
+            val address = binding.addressEditText.text.toString()
 
             if (name.isNotBlank() && id.isNotBlank()) {
                 val student = Student(
                     name = name,
                     id = id,
                     imageResId = R.drawable.default_avatar,
-                    isChecked = false
+                    isChecked = false,
+                    phoneNumber = phone,
+                    address = address
                 )
 
                 Model.shared.students.add(student)
@@ -45,6 +49,8 @@ class AddStudentActivity : AppCompatActivity() {
                 // Clear inputs
                 binding.nameEditText.text.clear()
                 binding.idEditText.text.clear()
+                binding.phoneEditText.text.clear()
+                binding.addressEditText.text.clear()
             }
             else {
                 binding.statusTextView.text = "Please enter both Name and ID."
