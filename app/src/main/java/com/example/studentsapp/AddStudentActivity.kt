@@ -18,6 +18,16 @@ class AddStudentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddStudentBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.mainToolbar)
+        supportActionBar?.title = "Add Student"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        binding.mainToolbar.setNavigationOnClickListener {
+            // This handles the back button press
+            onBackPressedDispatcher.onBackPressed()
+        }
+
         setupView()
     }
 
@@ -57,5 +67,4 @@ class AddStudentActivity : AppCompatActivity() {
             }
         }
     }
-
 }

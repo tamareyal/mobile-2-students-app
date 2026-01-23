@@ -1,14 +1,13 @@
 package com.example.studentsapp
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.studentsapp.databinding.ActivityStudentDetailsBinding
-import com.example.studentsapp.models.Student
 import com.example.studentsapp.models.Model
-import android.content.Intent
+import com.example.studentsapp.models.Student
+
 
 class StudentDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityStudentDetailsBinding
@@ -18,6 +17,16 @@ class StudentDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityStudentDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.mainToolbar)
+        supportActionBar?.title = "Student Details"
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        binding.mainToolbar.setNavigationOnClickListener {
+            // This handles the back button press
+            onBackPressedDispatcher.onBackPressed()
+        }
 
         // Get student ID from Intent
         val studentId = intent.getStringExtra("STUDENT_ID")
