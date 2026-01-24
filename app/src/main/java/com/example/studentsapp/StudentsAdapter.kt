@@ -11,23 +11,21 @@ interface OnItemClickListener {
 class StudentsAdapter (
     private var students: List<Student>
 ): RecyclerView.Adapter<StudentRowViewHolder>() {
+    var listener: OnItemClickListener? = null
 
-        var listener: OnItemClickListener? = null
+    override fun getItemCount(): Int = students.size
 
-        override fun getItemCount(): Int = students.size
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentRowViewHolder {
-            val inflater = android.view.LayoutInflater.from(parent.context)
-            val binding = RowStudentBinding.inflate(inflater, parent, false)
-            return StudentRowViewHolder(
-                binding,
-                listener
-            )
-        }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentRowViewHolder {
+        val inflater = android.view.LayoutInflater.from(parent.context)
+        val binding = RowStudentBinding.inflate(inflater, parent, false)
+        return StudentRowViewHolder(
+            binding,
+            listener
+        )
+    }
 
     override fun onBindViewHolder(holder: StudentRowViewHolder, position: Int) {
         holder.bind(students[position], position)
-
     }
-    }
+}
 
