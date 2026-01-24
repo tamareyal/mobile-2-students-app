@@ -67,6 +67,14 @@ class EditStudentActivity : AppCompatActivity() {
         }
 
         binding.saveButton.setOnClickListener {
+            for (student in Model.shared.students) {
+                if (student.id == binding.idEditText.text.toString() &&
+                    student != this.student) {
+                    binding.statusTextView.text = "Student ID already exists."
+                    return@setOnClickListener
+                }
+            }
+
             val name = binding.nameEditText.text.toString()
             val id = binding.idEditText.text.toString()
             val phone = binding.phoneEditText.text.toString()
