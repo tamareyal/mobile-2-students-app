@@ -22,7 +22,7 @@ class StudentDetailsActivity : AppCompatActivity() {
                 if (deleted) {
                     finish()
                 } else {
-                    loadStudent() // refresh UI with updated data
+                    loadStudent()
                 }
             }
         }
@@ -42,6 +42,11 @@ class StudentDetailsActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
 
+        val studentId = intent.getStringExtra("STUDENT_ID")
+        student = Model.shared.students.find {
+            it.id == studentId
+        }
+
         loadStudent()
 
         binding.editButton.setOnClickListener {
@@ -55,10 +60,6 @@ class StudentDetailsActivity : AppCompatActivity() {
     }
 
     private fun loadStudent() {
-        val studentId = intent.getStringExtra("STUDENT_ID")
-        student = Model.shared.students.find {
-            it.id == studentId
-        }
 
         binding.checkBox.setOnCheckedChangeListener { _, isChecked ->
             student?.isChecked = isChecked
