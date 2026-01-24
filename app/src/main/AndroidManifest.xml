@@ -13,7 +13,12 @@
         android:theme="@style/Theme.StudentsApp">
         <activity
             android:name=".EditStudentActivity"
-            android:exported="false" />
+            android:parentActivityName=".MainActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
         <activity
             android:name=".StudentDetailsActivity"
             android:parentActivityName=".MainActivity"

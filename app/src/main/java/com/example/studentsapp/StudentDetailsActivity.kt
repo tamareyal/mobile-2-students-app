@@ -60,6 +60,10 @@ class StudentDetailsActivity : AppCompatActivity() {
             it.id == studentId
         }
 
+        binding.checkBox.setOnCheckedChangeListener { _, isChecked ->
+            student?.isChecked = isChecked
+        }
+
         student?.let {
             binding.nameTextView.text = "Name: ${it.name}"
             binding.idTextView.text = "ID: ${it.id}"
