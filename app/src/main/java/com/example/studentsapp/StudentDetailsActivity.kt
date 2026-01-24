@@ -1,13 +1,13 @@
 package com.example.studentsapp
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.studentsapp.databinding.ActivityStudentDetailsBinding
-import com.example.studentsapp.models.Student
 import com.example.studentsapp.models.Model
+import com.example.studentsapp.models.Student
+
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContracts
 
@@ -31,6 +31,16 @@ class StudentDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityStudentDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.mainToolbar)
+        supportActionBar?.title = "Student Details"
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        binding.mainToolbar.setNavigationOnClickListener {
+            // This handles the back button press
+            onBackPressedDispatcher.onBackPressed()
+        }
 
         loadStudent()
 
@@ -48,6 +58,10 @@ class StudentDetailsActivity : AppCompatActivity() {
         val studentId = intent.getStringExtra("STUDENT_ID")
         student = Model.shared.students.find {
             it.id == studentId
+        }
+
+        binding.checkBox.setOnCheckedChangeListener { _, isChecked ->
+            student?.isChecked = isChecked
         }
 
         student?.let {

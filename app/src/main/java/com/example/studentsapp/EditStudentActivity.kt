@@ -21,6 +21,17 @@ class EditStudentActivity : AppCompatActivity() {
         binding = ActivityEditStudentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.mainToolbar)
+        supportActionBar?.title = "Edit Student"
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        binding.mainToolbar.setNavigationOnClickListener {
+            // This handles the back button press
+            onBackPressedDispatcher.onBackPressed()
+        }
+
         // Get student ID from Intent
         val studentId = intent.getStringExtra("STUDENT_ID")
         student = Model.shared.students.find {
