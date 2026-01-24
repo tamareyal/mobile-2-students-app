@@ -20,7 +20,7 @@ class StudentDetailsActivity : AppCompatActivity() {
             if (result.resultCode == RESULT_OK) {
                 val deleted = result.data?.getBooleanExtra("DELETED", false) ?: false
                 if (deleted) {
-                    finish() // student gone → close details screen
+                    finish()
                 } else {
                     loadStudent() // refresh UI with updated data
                 }
