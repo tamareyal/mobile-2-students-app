@@ -70,6 +70,7 @@ class EditStudentActivity : AppCompatActivity() {
             for (student in Model.shared.students) {
                 if (student.id == binding.idEditText.text.toString() &&
                     student != this.student) {
+                    binding.statusTextView.setTextColor(getColorStateList(android.R.color.holo_red_dark))
                     binding.statusTextView.text = "Student ID already exists."
                     return@setOnClickListener
                 }

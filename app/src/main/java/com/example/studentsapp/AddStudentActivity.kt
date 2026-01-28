@@ -40,6 +40,7 @@ class AddStudentActivity : AppCompatActivity() {
         binding.saveButton.setOnClickListener {
             for (student in Model.shared.students) {
                 if (student.id == binding.idEditText.text.toString()) {
+                    binding.statusTextView.setTextColor(getColorStateList(android.R.color.holo_red_dark))
                     binding.statusTextView.text = "Student ID already exists."
                     return@setOnClickListener
                 }
@@ -61,6 +62,7 @@ class AddStudentActivity : AppCompatActivity() {
                 )
 
                 Model.shared.students.add(student)
+                binding.statusTextView.setTextColor(getColorStateList(android.R.color.holo_green_dark))
                 binding.statusTextView.text = "Student Saved: Name = $name, ID = $id"
 
                 // Clear inputs
@@ -70,6 +72,7 @@ class AddStudentActivity : AppCompatActivity() {
                 binding.addressEditText.text.clear()
             }
             else {
+                binding.statusTextView.setTextColor(getColorStateList(android.R.color.holo_red_dark))
                 binding.statusTextView.text = "Please enter both Name and ID."
             }
         }
